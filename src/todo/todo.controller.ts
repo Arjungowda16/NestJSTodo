@@ -12,8 +12,9 @@ export class TodoController {
   constructor(private readonly todoService: TodoService) {}
 
   @ApiBearerAuth()
-  @ApiOperation({ description:'To add a new task wrt to the user email.', summary: 'Add a new task.'})
   @UseGuards(JwtAuthGuard)
+  @ApiOperation({ description:'To add a new task wrt to the user email.', summary: 'Add a new task.'})
+  
   @Post()
   async create(@Body() createTodoDto: CreateTodoDto, @UserEmail()
   UserEmail: string) {
